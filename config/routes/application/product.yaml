@@ -1,0 +1,37 @@
+app_product_single:
+  path:       /products/{id}
+  controller: App\Controller\ProductController::single
+  methods:    GET
+  requirements:
+    id: '\d+'
+
+app_product_list:
+  path:       /products
+  controller: App\Controller\ProductController::list
+  methods:    GET
+
+app_product_add:
+  path:       /products
+  controller: App\Controller\ProductController::add
+  methods:    POST
+
+app_product_modify:
+  path:       /products/{id}
+  controller: App\Controller\ProductController::update
+  methods:    PUT
+  requirements:
+    id: '\d+'
+
+app_product_delete:
+  path:       /products/{id}
+  controller: App\Controller\ProductController::delete
+  methods:    DELETE
+  requirements:
+    id: '\d+'
+
+app_product_add_to_cart:
+  path:       /products/{id}/add-to-cart
+  controller: App\Controller\ProductController::addToCart
+  methods:    PATCH
+  requirements:
+    id: '\d+'
