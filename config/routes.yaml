@@ -7,3 +7,6 @@ app_directory:
     name_prefix: api_
     prefix: /api/
     type: directory
+
+api_login_check:
+    path: /api/login_check

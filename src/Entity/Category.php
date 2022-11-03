@@ -17,10 +17,6 @@ class Category
     #[Groups(['default'])]
     private ?int $id = null;
 
-    #[ORM\Column(length: 150)]
-    #[Groups(['default'])]
-    private ?string $slug = null;
-
     #[ORM\Column(length: 255)]
     #[Groups(['default'])]
     private ?string $name = null;

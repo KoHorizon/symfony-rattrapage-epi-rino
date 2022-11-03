@@ -210,7 +210,7 @@ class ProductController extends AbstractController
         $parameters = json_decode($request->getContent(), true);
         $form->submit($parameters);
         if (!$form->isValid()) {
-            return $this->buildFormErrorResponse($form);
+            return $this->json(null, );
         }
 
         try {

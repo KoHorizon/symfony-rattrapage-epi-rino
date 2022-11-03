@@ -22,7 +22,7 @@ class ProductEmptySendEmailCommand extends Command
     private ProductRepository $productRepository;
     private MailerInterface $mailer;
 
-    public function __construct($name, ProductRepository $productRepository, MailerInterface $mailer)
+    public function __construct(ProductRepository $productRepository, MailerInterface $mailer, string $name = null)
     {
         $this->productRepository = $productRepository;
         $this->mailer = $mailer;
