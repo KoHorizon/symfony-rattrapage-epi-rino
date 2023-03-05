@@ -1,0 +1,1 @@
+La commande est : php bin/console send-voucher-to-old-users

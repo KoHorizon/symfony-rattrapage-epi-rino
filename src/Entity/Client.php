@@ -38,11 +38,32 @@ class Client
     #[Groups(['default'])]
     private ?\DateTimeInterface $birthDate = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(['default'])]
+    private ?\DateTimeInterface $createdAt = null;
+
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Voucher::class)]
+    private Collection $vouchers;
+
     public function __construct()
     {
         $this->addresses = new ArrayCollection();
+        $this->createdAt = new \DateTime();
+        $this->vouchers = new ArrayCollection();
     }
 
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -122,6 +143,36 @@ class Client
     public function setBirthDate(\DateTimeInterface $birthDate): self
     {
         $this->birthDate = $birthDate;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Voucher>
+     */
+    public function getVouchers(): Collection
+    {
+        return $this->vouchers;
+    }
+
+    public function addVoucher(Voucher $voucher): self
+    {
+        if (!$this->vouchers->contains($voucher)) {
+            $this->vouchers->add($voucher);
+            $voucher->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVoucher(Voucher $voucher): self
+    {
+        if ($this->vouchers->removeElement($voucher)) {
+            // set the owning side to null (unless already changed)
+            if ($voucher->getClient() === $this) {
+                $voucher->setClient(null);
+            }
+        }
 
         return $this;
     }

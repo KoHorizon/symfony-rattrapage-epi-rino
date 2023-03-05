@@ -14,7 +14,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 
 #[AsCommand(
-    name: 'app:product-empty:send-email',
+    name: 'app:product-empty:send-',
     description: 'Send email when product quantity is empty',
 )]
 class ProductEmptySendEmailCommand extends Command
